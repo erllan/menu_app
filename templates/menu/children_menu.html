@@ -1,0 +1,13 @@
+{% load menu %}
+{% spaceless %}
+{% if children_menu %}
+<ul class="{{ class }}">
+    {% for children in children_menu%}
+    <li><a class="dropdown-item {% if active_item == children.name %}active{% endif %}"
+           href="{% url 'main_name' children.name %}"> {{children.name}} </a>
+        {% get_menu_children children.id True%}
+    </li>
+    {% endfor %}
+</ul>
+{% endif%}
+{% endspaceless %}
